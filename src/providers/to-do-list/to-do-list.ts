@@ -30,8 +30,10 @@ export class ToDoListProvider {
         id = item.id + 1;
       }
     });
+    const newItem = new TodoItem(id, title)
+    this._todos.push(newItem)
     this.saveToStorage()
-    return new TodoItem(id, title)
+    return newItem
   }
 
   public find(id: number): TodoItem {
@@ -63,7 +65,8 @@ export class ToDoListProvider {
     const todos = localStorage.getItem('todos');
     if (todos) {
       try {
-        this._todos = JSON.parse(todos)
+        const list = JSON.parse(todos)
+        this._todos = list
       } catch (error) {
         console.log(error)
       }
