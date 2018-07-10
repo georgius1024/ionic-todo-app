@@ -70,6 +70,9 @@ describe('MyApp Component', () => {
         expect(items.length).toBe(3);
         expect(items[0].id).toBe(1);
         expect(items[1].id).toBe(2);
+        items[1].archive()
+        let items = list.getItems();
+        expect(items[1].id).toBe(3);
     });
 
     // it('should have one pages', () => {
